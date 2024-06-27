@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    android:padding="@dimen/_16sdp">
+
+    <TextView
+        android:id="@+id/tv_header"
+        style="@style/text_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/kanit_bold"
+        android:text="@string/my_class"
+        android:textSize="@dimen/_15ssp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/view_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@color/menu_icon_color" />
+
+    <ImageView
+        android:id="@+id/iv_header"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:contentDescription="@string/profile"
+        android:src="@drawable/profile"
+        tools:ignore="ImageContrastCheck" />
+
+    <TextView
+        android:id="@+id/tv_name_header"
+        style="@style/text_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:text="@string/name2"
+        android:textSize="@dimen/_16ssp" />
+
+    <TextView
+        android:id="@+id/tv_phone_header"
+        style="@style/text_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/phone2"
+        android:textSize="@dimen/_12ssp" />
+
+    <View
+        android:id="@+id/view_header2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@color/menu_icon_color" />
+
+</LinearLayout>
