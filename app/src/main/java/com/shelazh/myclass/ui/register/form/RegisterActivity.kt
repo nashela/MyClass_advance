@@ -1,10 +1,10 @@
-package com.shelazh.myclass
+package com.shelazh.myclass.ui.register.form
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.shelazh.myclass.databinding.ActivityLoginBinding
 import com.shelazh.myclass.databinding.ActivityRegisterBinding
+import com.shelazh.myclass.ui.login.LoginActivity
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -14,7 +14,7 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.txtLoginAcc.setOnClickListener{
+        binding.txtLoginAcc.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }

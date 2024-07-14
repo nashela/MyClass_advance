@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "751259376012",
+    "project_id": "myclass-b0042",
+    "storage_bucket": "myclass-b0042.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:751259376012:android:02e1636d1b9067edab1ea9",
+        "android_client_info": {
+          "package_name": "com.shelazh.myclass"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9hlX3Or2J0BM161lqzPukwRSc30Hek4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

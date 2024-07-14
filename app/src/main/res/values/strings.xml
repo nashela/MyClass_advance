@@ -36,4 +36,20 @@
     <string name="poke">Poke</string>
     <string name="message">Message</string>
     <string name="no_notification">Tidak ada notifikasi</string>
+    <string name="logout2">Apakah Anda yakin ingin logout?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="title_pilih_school">Pilih school</string>
+    <string name="label_data_is_empty">data is empty\n</string>
+
+    <string name="label_logging_in">Logging In...</string>
+    <string name="label_register_in">Register In...</string>
+    <string name="label_success">Success</string>
+    <string name="error_name_cannot_be_empty">Name cannot be empty</string>
+    <string name="error_photo_cannot_be_empty">Photo cannot be empty</string>
+    <string name="error_school_cannot_be_empty">School cannot be empty</string>
+    <string name="error_bio_cannot_be_empty">Bio cannot be empty</string>
+    <string name="error_phone_cannot_be_empty">Phone cannot be empty</string>
+    <string name="error_password_cannot_be_empty">Password cannot be empty</string>
+    <string name="title_insert_photo">Insert Photo</string>
 </resources>

@@ -5,5 +5,8 @@
     <color name="grape">#5224BB</color>
 
     <color name="menu_icon_color">#FFFFFF</color> <!-- putih untuk mode gelap -->
+    <color name="primary_color">#222222</color>
+    <color name="selected_primary_main_color">#5224BB</color>
+    <color name="primary_main_color">#595959</color>
 
 </resources>

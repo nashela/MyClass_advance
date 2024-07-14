@@ -1,4 +1,4 @@
-package com.shelazh.myclass
+package com.shelazh.myclass.ui.home
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,9 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.shelazh.myclass.ui.detailProfile.DetailProfileActivity
+import com.shelazh.myclass.R
+import com.shelazh.myclass.ui.setting.SettingActivity
 import com.shelazh.myclass.databinding.ActivityHomeBinding
 import com.shelazh.myclass.dummy.Adapter
 

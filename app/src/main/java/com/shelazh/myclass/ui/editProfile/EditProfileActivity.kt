@@ -1,15 +1,19 @@
-package com.shelazh.myclass
+package com.shelazh.myclass.ui.editProfile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.shelazh.myclass.databinding.ActivityEditProfileBinding
 
 class EditProfileActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityEditProfileBinding
+    private lateinit var binding: ActivityEditProfileBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-         binding = ActivityEditProfileBinding.inflate(layoutInflater)
+        binding = ActivityEditProfileBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
+        binding.btnBack.setOnClickListener {
+            onBackPressed()
+        }
     }
 }

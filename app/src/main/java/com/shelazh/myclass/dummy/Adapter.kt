@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.shelazh.myclass.DetailFriendActivity
+import com.shelazh.myclass.ui.detailFriend.DetailFriendActivity
 import com.shelazh.myclass.R
 
 class Adapter(private val context: Context) : RecyclerView.Adapter<Adapter.FriendViewHolder>() {

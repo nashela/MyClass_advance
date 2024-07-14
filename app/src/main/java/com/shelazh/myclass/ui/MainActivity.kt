@@ -1,8 +1,9 @@
-package com.shelazh.myclass
+package com.shelazh.myclass.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.shelazh.myclass.ui.login.LoginActivity
 import com.shelazh.myclass.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

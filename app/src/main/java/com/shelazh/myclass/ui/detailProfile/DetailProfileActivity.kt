@@ -1,8 +1,10 @@
-package com.shelazh.myclass
+package com.shelazh.myclass.ui.detailProfile
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.shelazh.myclass.ui.password.EditPasswordActivity
+import com.shelazh.myclass.ui.editProfile.EditProfileActivity
 import com.shelazh.myclass.databinding.ActivityDetailProfileBinding
 
 class DetailProfileActivity : AppCompatActivity() {

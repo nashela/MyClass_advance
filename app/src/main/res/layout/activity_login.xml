@@ -1,119 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_marginTop="150dp"
-    android:padding="15dp"
-    tools:context=".LoginActivity">
+<layout>
 
-    <LinearLayout
+    <data>
+        <variable
+            name="activity"
+            type="com.shelazh.myclass.ui.login.LoginActivity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:ignore="UseCompoundDrawables">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_width="@dimen/_35sdp"
-            android:layout_height="@dimen/_35sdp"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="@string/label_login"
-            android:src="@drawable/profile"
-            tools:ignore="ImageContrastCheck" />
-
-        <TextView
-            style="@style/text_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/inter_variablefont"
-            android:text="@string/label_login"
-            android:textSize="32sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <TextView
-        style="@style/text_color"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/inter_variablefont"
-        android:text="@string/label_login_to_your_account"
-        android:textSize="@dimen/_14ssp" />
-
-    <TextView
-        style="@style/text_color"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/inter_variablefont"
-        android:text="@string/phone_number"
-        android:textSize="@dimen/_15ssp"
-        android:textStyle="bold" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.textfield.TextInputEditText
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:imeOptions="actionNext"
-            android:inputType="phone"
-            tools:ignore="VisualLintTextFieldSize,SpeakableTextPresentCheck" />
+            android:layout_margin="15dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:context=".ui.login.LoginActivity">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
 
-    <TextView
-        style="@style/text_color"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/inter_variablefont"
-        android:text="@string/password"
-        android:textSize="@dimen/_15ssp"
-        android:textStyle="bold" />
+                <ImageView
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="@string/label_login"
+                    android:src="@drawable/profile"
+                    tools:ignore="ImageContrastCheck" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:endIconMode="password_toggle">
+                <TextView
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_variablefont"
+                    android:text="@string/label_login"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:imeOptions="actionNext"
-            android:inputType="textPassword"
-            tools:ignore="VisualLintTextFieldSize,SpeakableTextPresentCheck" />
+            <TextView
+                style="@style/text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/inter_variablefont"
+                android:text="@string/label_login_to_your_account"
+                android:textSize="@dimen/_14ssp" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                style="@style/text_color"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/inter_variablefont"
+                android:text="@string/phone_number"
+                android:textSize="@dimen/_15ssp"
+                android:textStyle="bold" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_16sdp"
-        android:background="@drawable/btn_entry"
-        android:fontFamily="@font/roboto_regular"
-        android:text="@string/label_login"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_15ssp"
-        android:textStyle="bold"
-        tools:ignore="VisualLintButtonSize" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/txt_register_acc"
-        style="@style/text_color"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_8sdp"
-        android:fontFamily="@font/inter_variablefont"
-        android:gravity="center"
-        android:text="@string/dont_have_account"
-        android:textSize="@dimen/_13ssp"
-        android:textStyle="bold" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="phone"
+                    android:text="@={activity.inputPhone}"
+                    tools:ignore="VisualLintTextFieldSize,SpeakableTextPresentCheck" />
 
-</LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/text_color"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/inter_variablefont"
+                android:text="@string/password"
+                android:textSize="@dimen/_15ssp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={activity.inputPassword}"
+                app:endIconMode="password_toggle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPassword"
+                    tools:ignore="VisualLintTextFieldSize,SpeakableTextPresentCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:background="@drawable/btn_entry"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/label_login"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15ssp"
+                android:textStyle="bold"
+                tools:ignore="VisualLintButtonSize" />
+
+            <TextView
+                android:id="@+id/txt_register_acc"
+                style="@style/text_color"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:fontFamily="@font/inter_variablefont"
+                android:gravity="center"
+                android:text="@string/dont_have_account"
+                android:textSize="@dimen/_13ssp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

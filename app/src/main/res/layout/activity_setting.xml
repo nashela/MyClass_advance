@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingActivity">
+    tools:context=".ui.setting.SettingActivity">
 
         <ImageView
             android:id="@+id/btn_back"
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/kanit_bold"
-        android:text="@string/profile_friend"
+        android:text="@string/setting"
         android:textSize="@dimen/_15ssp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,17 +72,22 @@
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toBottomOf="@id/view" />-->
 
-<!--    <Button-->
-<!--        android:id="@+id/btnLogout"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="@string/logout"-->
-<!--        android:textSize="@dimen/_16ssp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/switchDarkMode" />-->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_entry"
+        android:text="@string/logout"
+        android:textSize="@dimen/_16ssp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_setting"
+        tools:ignore="TextContrastCheck" />
 
-<!--    <View-->
+    <!--    <View-->
 <!--        android:id="@+id/view2"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="@dimen/_1sdp"-->

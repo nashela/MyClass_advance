@@ -1,4 +1,4 @@
-package com.shelazh.myclass
+package com.shelazh.myclass.ui.password
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
