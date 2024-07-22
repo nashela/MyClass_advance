@@ -16,9 +16,18 @@ class RegisterViewModel @Inject constructor() : BaseViewModel(){
     private val _registerResponse = MutableSharedFlow<RegisterResponse>()
     val registerResponse = _registerResponse.asSharedFlow()
 
+    override fun apiLogout() {
+        TODO("Not yet implemented")
+    }
+
+    override fun apiRenewToken() {
+        TODO("Not yet implemented")
+
+    }
+
     val message = MutableLiveData<String>()
 
-    fun register(phone: String?, name: String?, schoolId: Int?, password: String?, passwordConfirmation: String?) =
+    fun register(phone: String, name: String, password: String, passwordConfirmation: String, schoolId: Int) =
         viewModelScope.launch {
             try {
                 ApiObserver.run(

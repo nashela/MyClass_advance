@@ -52,4 +52,6 @@
     <string name="error_phone_cannot_be_empty">Phone cannot be empty</string>
     <string name="error_password_cannot_be_empty">Password cannot be empty</string>
     <string name="title_insert_photo">Insert Photo</string>
+    <string name="error_password_confirm_cannot_be_empty">Password cannot be empty</string>
+    <string name="error_unknown">ERROR</string>
 </resources>

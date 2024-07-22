@@ -1,6 +1,7 @@
 package com.shelazh.myclass.base.viewModel
 
 import com.crocodic.core.base.viewmodel.CoreViewModel
+import com.crocodic.core.data.CoreSession
 import com.google.gson.Gson
 import com.shelazh.myclass.api.ApiService
 import com.shelazh.myclass.data.local.UserDao
@@ -21,6 +22,9 @@ open class BaseViewModel : CoreViewModel(){
 
     @Inject
     lateinit var apiService: ApiService
+
+    @Inject
+    lateinit var session: CoreSession
 
     @Inject
     lateinit var gson: Gson

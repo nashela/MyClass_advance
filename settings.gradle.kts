@@ -16,4 +16,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "My Class"
 include(":app")
- 

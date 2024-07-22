@@ -39,9 +39,9 @@ data class User (
 //    @SerializedName("password_confirmation")
 //    var passwordConfirmation: String?,
 
-//    @Expose
-//    @SerializedName("photo")
-//    var phone: String?,
+    @Expose
+    @SerializedName("photo")
+    var photo: String?,
 
 //    colek
 //    @Expose

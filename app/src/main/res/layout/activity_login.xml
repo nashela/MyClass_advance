@@ -96,7 +96,6 @@
                 android:id="@+id/input_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={activity.inputPassword}"
                 app:endIconMode="password_toggle">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -104,6 +103,7 @@
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
                     android:inputType="textPassword"
+                    android:text="@={activity.inputPassword}"
                     tools:ignore="VisualLintTextFieldSize,SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>

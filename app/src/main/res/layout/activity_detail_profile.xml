@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="user"
+            type="com.shelazh.myclass.data.local.User" />
+        <variable
+            name="activity"
+            type="com.shelazh.myclass.ui.detailProfile.DetailProfileActivity" />
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -52,6 +61,7 @@
         android:layout_marginTop="55dp"
         android:contentDescription="@string/profile"
         android:src="@drawable/profile"
+        urlImage="@{user.photo}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
@@ -115,7 +125,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="4dp"
-        android:text="@string/name2"
+        android:text="@={activity.name}"
         android:textSize="@dimen/_13ssp"
         app:layout_constraintStart_toEndOf="@+id/img_profile_detail_friend"
         app:layout_constraintTop_toBottomOf="@+id/txt_name" />
@@ -151,7 +161,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="4dp"
-        android:text="@string/phone2"
+        android:text="@={activity.phone}"
         android:textSize="@dimen/_13ssp"
         app:layout_constraintStart_toEndOf="@+id/img_phone_detail_friend"
         app:layout_constraintTop_toBottomOf="@+id/txt_phone"
@@ -189,10 +199,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="4dp"
-        android:text="@string/school2"
+        android:text="@{activity.school.school}"
         android:textSize="@dimen/_13ssp"
         app:layout_constraintStart_toEndOf="@+id/img_school_detail_friend"
         app:layout_constraintTop_toBottomOf="@+id/txt_school"
         tools:ignore="VisualLintBounds" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

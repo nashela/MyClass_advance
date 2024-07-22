@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+
     <application
         android:name=".base.App"
         android:allowBackup="true"
@@ -12,10 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyClass"
-        tools:targetApi="31">
-        <activity
-            android:name=".ui.register.school.ListSchoolActivity"
-            android:exported="false" />
+        tools:targetApi="31"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".ui.password.EditPasswordActivity"
             android:exported="false" />
@@ -49,6 +50,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <provider
+            android:authorities="com.shelazh.myclass.fileprovider"
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider" />
+        </provider>
     </application>
 
 </manifest>

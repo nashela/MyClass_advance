@@ -20,6 +20,9 @@ interface UserDao: CoreDao<User> {
     @Query("SELECT * FROM User WHERE name LIKE :keyword")
     suspend fun findUser(keyword: String?): List<User>
 
+    @Query("SELECT EXISTS (SELECT 1 FROM User WHERE databaseId = 1)")
+    fun isLogin(): Boolean
+
     @Query("SELECT * FROM User")
     suspend fun findUser(): List<User>
 
