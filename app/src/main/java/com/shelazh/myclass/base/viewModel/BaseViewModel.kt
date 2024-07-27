@@ -24,10 +24,11 @@ open class BaseViewModel : CoreViewModel(){
     lateinit var apiService: ApiService
 
     @Inject
-    lateinit var session: CoreSession
+    lateinit var session: com.shelazh.myclass.base.viewModel.CoreSession
 
     @Inject
     lateinit var gson: Gson
+
 
     override fun apiLogout() {
         TODO("Not yet implemented")

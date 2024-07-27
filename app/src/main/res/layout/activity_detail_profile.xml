@@ -7,6 +7,9 @@
         <variable
             name="activity"
             type="com.shelazh.myclass.ui.detailProfile.DetailProfileActivity" />
+        <variable
+            name="school"
+            type="com.shelazh.myclass.data.SchoolModel" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -38,12 +41,12 @@
         android:text="@string/profile"
         android:textSize="@dimen/_15ssp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/btn_more"
+        app:layout_constraintEnd_toStartOf="@+id/search_view"
         app:layout_constraintStart_toEndOf="@+id/btn_back"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/btn_more"
+        android:id="@+id/search_view"
         android:layout_width="@dimen/_25sdp"
         android:layout_height="@dimen/_25sdp"
         android:layout_marginTop="20dp"
@@ -55,7 +58,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/img_profile"
+        android:id="@+id/img_detail_profile"
         android:layout_width="@dimen/_100sdp"
         android:layout_height="@dimen/_100sdp"
         android:layout_marginTop="55dp"
@@ -78,7 +81,7 @@
         android:textColor="@color/white"
         android:textSize="@dimen/_12ssp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_profile"
+        app:layout_constraintTop_toBottomOf="@+id/img_detail_profile"
         tools:ignore="TextSizeCheck,VisualLintButtonSize" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -92,7 +95,7 @@
         android:textColor="@color/black"
         android:textSize="@dimen/_12ssp"
         app:layout_constraintStart_toEndOf="@+id/btn_edit_profile"
-        app:layout_constraintTop_toBottomOf="@+id/img_profile"
+        app:layout_constraintTop_toBottomOf="@+id/img_detail_profile"
         tools:ignore="TextSizeCheck,VisualLintButtonSize" />
 
     <ImageView
@@ -187,19 +190,19 @@
         android:layout_marginStart="12dp"
         android:text="@string/school"
         android:textSize="@dimen/_16ssp"
-        app:layout_constraintBottom_toTopOf="@+id/txt_school_friend"
+        app:layout_constraintBottom_toTopOf="@+id/txt_school_profile"
         app:layout_constraintStart_toEndOf="@+id/img_school_detail_friend"
         app:layout_constraintTop_toTopOf="@+id/img_school_detail_friend"
         tools:ignore="VisualLintBounds" />
 
     <TextView
-        android:id="@+id/txt_school_friend"
+        android:id="@+id/txt_school_profile"
         style="@style/text_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="4dp"
-        android:text="@{activity.school.school}"
+        android:text="Default"
         android:textSize="@dimen/_13ssp"
         app:layout_constraintStart_toEndOf="@+id/img_school_detail_friend"
         app:layout_constraintTop_toBottomOf="@+id/txt_school"

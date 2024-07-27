@@ -9,7 +9,7 @@ import com.shelazh.myclass.data.local.UserDao
 
 @Database(
     entities = [User::class],
-    version = 1,
+    version = 2,
     exportSchema = true
 )
 abstract class MyDatabase: RoomDatabase() {

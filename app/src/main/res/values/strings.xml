@@ -54,4 +54,9 @@
     <string name="title_insert_photo">Insert Photo</string>
     <string name="error_password_confirm_cannot_be_empty">Password cannot be empty</string>
     <string name="error_unknown">ERROR</string>
+
+    <array name="label_image_source">
+        <item>Take from camera</item>
+        <item>Insert from gallery</item>
+    </array>
 </resources>

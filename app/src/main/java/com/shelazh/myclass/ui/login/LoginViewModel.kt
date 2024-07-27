@@ -6,6 +6,7 @@ import com.crocodic.core.api.ApiObserver
 import com.crocodic.core.api.ApiResponse
 import com.crocodic.core.api.ApiStatus
 import com.crocodic.core.data.CoreSession
+import com.shelazh.myclass.R
 import com.shelazh.myclass.base.viewModel.BaseViewModel
 import com.shelazh.myclass.data.remote.FriendResponse
 import com.shelazh.myclass.data.remote.LoginResponse
@@ -42,39 +43,49 @@ class LoginViewModel @Inject constructor() : BaseViewModel() {
                 override suspend fun onSuccess(response: LoginResponse) {
                     super.onSuccess(response)
                     response.data?.let {
-                        userRepository.saveUSer(it) // Pastikan nama metode sesuai
-                        getToken() // Mendapatkan token setelah login berhasil
+                        userRepository.saveUSer(it)
+                    response.token?.let {
+                        session.saveToken(it)
+//                        session.setValue("token", R.string.token)
+//                        _tokenResponse.postValue(ApiResponse(ApiStatus.SUCCESS, tokenResponse))
+                    }
+//                        _loginResponse.emit(ApiResponse(ApiStatus.SUCCESS, response))
+//                        getToken() // Mendapatkan token setelah login berhasil
                     }
                 }
             }
         )
     }
 
-    fun checkLogin(isLogin: (Boolean) -> Unit) {
+    fun checkLogin(isLogin: (Boolean) -> Unit){
         viewModelScope.launch {
-            val login = userDao.isLogin()
+            var login  = false
+            CoroutineScope(Dispatchers.IO).launch {
+                login = userDao.isLogin()
+            }
+            delay(1000)
             isLogin(login)
         }
     }
 
-    fun getToken() {
-        viewModelScope.launch {
-            _tokenResponse.postValue(ApiResponse(ApiStatus.LOADING, "Loading..."))
-            ApiObserver(
-                block = { apiService.getToken() },
-                toast = false,
-                responseListener = object : ApiObserver.ResponseListener {
-                    override suspend fun onSuccess(response: JSONObject) {
-                        val token = response.getString("token")
-                        // Simpan token ke session atau SharedPreferences
-                        _tokenResponse.postValue(ApiResponse(ApiStatus.SUCCESS, "Token berhasil diambil"))
-                    }
-
-                    override suspend fun onError(response: ApiResponse) {
-                        _tokenResponse.postValue(ApiResponse(ApiStatus.ERROR, "Gagal mendapatkan token"))
-                    }
-                }
-            )
-        }
-    }
+//    fun getToken() {
+//        viewModelScope.launch {
+//            _tokenResponse.postValue(ApiResponse(ApiStatus.LOADING, "Loading..."))
+//            ApiObserver(
+//                block = { apiService.getToken() },
+//                toast = false,
+//                responseListener = object : ApiObserver.ResponseListener {
+//                    override suspend fun onSuccess(response: JSONObject) {
+//                        val token = response.getString("token")
+//                        // Simpan token ke session atau SharedPreferences
+//                        _tokenResponse.postValue(ApiResponse(ApiStatus.SUCCESS, "Token berhasil diambil"))
+//                    }
+//
+//                    override suspend fun onError(response: ApiResponse) {
+//                        _tokenResponse.postValue(ApiResponse(ApiStatus.ERROR, "Gagal mendapatkan token"))
+//                    }
+//                }
+//            )
+//        }
+//    }
 }

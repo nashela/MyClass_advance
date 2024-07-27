@@ -38,14 +38,12 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
                 openActivity<HomeActivity>()
                 finish()
             }
+
+            else {
+                observe()
+            }
         }
-//            else {
-//                observe()
-//                initToken()
-//            }
-//        }
         observe()
-        initToken()
         binding.activity = this
 
         binding.txtRegisterAcc.setOnClickListener {
@@ -88,12 +86,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
                                 binding.btnLogin.isVisible = true
                             }
 
-//                            ApiStatus.LOADING -> loadingDialog.show("Get Token...")
-//                            else -> {
-//                                loadingDialog.dismiss()
-//                                binding.root.snacked(response.message ?: "...")
-//                            }
-                            else -> {}
+                            ApiStatus.LOADING -> loadingDialog.show("Get Token...")
+                            else -> {
+                                loadingDialog.dismiss()
+                                binding.root.snacked(response.message ?: "...")
+                            }
                         }
                     }
                 }
@@ -111,18 +108,5 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
             return
         }
         viewModel.login(inputPhone, inputPassword)
-    }
-
-    private fun initToken() {
-        lifecycleScope.launch {
-            loadingDialog.show("Get instance, wait for second...")
-            val dateNow = DateTimeHelper().dateNow()
-            val tokenInit = "$dateNow|rahasia"
-            val tokenEncrypt = tokenInit.base64encrypt()
-
-            session.setValue("token", tokenEncrypt)
-
-            viewModel.getToken()
-        }
     }
 }

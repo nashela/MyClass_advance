@@ -1,11 +1,13 @@
 package com.shelazh.myclass.data
 
 import android.os.Parcelable
+import androidx.room.Entity
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
+@Entity
 data class SchoolModel (
     @Expose
     @SerializedName("id")
@@ -13,5 +15,5 @@ data class SchoolModel (
 
     @Expose
     @SerializedName("school_name")
-    val school: String?,
+    val schoolName: String?,
 ):Parcelable

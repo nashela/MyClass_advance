@@ -12,6 +12,7 @@ import com.shelazh.myclass.data.repository.UserRepository
 import com.shelazh.myclass.databinding.ActivitySettingBinding
 import com.shelazh.myclass.ui.MainActivity
 import com.shelazh.myclass.ui.home.HomeActivity
+import com.shelazh.myclass.ui.login.LoginActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -33,22 +34,17 @@ class SettingActivity : NoViewModelActivity<ActivitySettingBinding>(R.layout.act
             AlertDialog.Builder(this)
                 .setTitle(R.string.logout)
                 .setMessage(R.string.logout2)
-                .setPositiveButton(R.string.yes) { dialog, which ->
+                .setPositiveButton(R.string.yes) { _, _ ->
                     lifecycleScope.launch {
-                        if (userRepository.checkLogin()){
-                            openActivity<HomeActivity>()
-                        }else{
-                            openActivity<MainActivity>()
-                        }
+                        userRepository.deleteUser()
+                        openActivity<LoginActivity>()
+                        finishAffinity()
                     }
-//                    val intent = Intent(this, MainActivity::class.java)
-//                    startActivity(intent)
                 }
-                .setNegativeButton(R.string.no) { dialog, which ->
+                .setNegativeButton(R.string.no) { dialog, _ ->
                     dialog.dismiss()
                 }
                 .show()
         }
-
     }
 }

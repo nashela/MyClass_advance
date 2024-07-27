@@ -34,13 +34,13 @@
         app:layout_constraintStart_toEndOf="@+id/btn_back"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/view_setting"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_1sdp"
-        android:layout_marginTop="12dp"
-        android:background="@color/menu_icon_color"
-        app:layout_constraintTop_toBottomOf="@id/tv_setting" />
+<!--    <View-->
+<!--        android:id="@+id/view_setting"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/_1sdp"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        android:background="@color/menu_icon_color"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tv_setting" />-->
 
     <!--    <TextView-->
     <!--        android:id="@+id/textViewSettings"-->
@@ -85,7 +85,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view_setting"
+        app:layout_constraintTop_toBottomOf="@id/tv_setting"
         tools:ignore="TextContrastCheck" />
 
     <!--    <View-->

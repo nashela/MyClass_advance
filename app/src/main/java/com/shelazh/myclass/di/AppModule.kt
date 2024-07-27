@@ -1,6 +1,7 @@
 package com.shelazh.myclass.di
 
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.room.Database
 import com.crocodic.core.data.CoreSession
 import com.crocodic.core.helper.NetworkHelper
@@ -41,6 +42,12 @@ class AppModule {
 
     @Provides
     fun provideSession(@ApplicationContext context: Context) = CoreSession(context)
+
+    @Provides
+    @Singleton
+    fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
+        return context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+    }
 
     @Singleton
     @Provides

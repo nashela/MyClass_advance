@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.ImageView
+import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -14,11 +15,13 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.crocodic.core.base.adapter.ReactiveListAdapter
 import com.crocodic.core.extension.openActivity
+import com.crocodic.core.extension.text
 import com.crocodic.core.helper.StringHelper
 import com.crocodic.core.helper.log.Log
 import com.shelazh.myclass.ui.detailProfile.DetailProfileActivity
 import com.shelazh.myclass.R
 import com.shelazh.myclass.base.activity.BaseActivity
+import com.shelazh.myclass.data.SchoolModel
 import com.shelazh.myclass.data.local.User
 import com.shelazh.myclass.ui.setting.SettingActivity
 import com.shelazh.myclass.databinding.ActivityHomeBinding
@@ -28,9 +31,13 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(R.layout.activity_home) {
+
+    lateinit var user: User
+    lateinit var schoolList: SchoolModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,77 +74,65 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(R.layout.a
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.baseline_dehaze_24)
-    }
 
-    private fun getFriend() = lifecycleScope.launch {
         viewModel.listFriend()
     }
 
     private fun observe() {
-        val adapter = ReactiveListAdapter<ItemFriendBinding, User>(R.layout.item_friend).initItem { position, data ->
-            toDetail(data)
-        }
+        val adapter =
+            ReactiveListAdapter<ItemFriendBinding, User>(R.layout.item_friend).initItem { position, data ->
+                toDetail(data)
+            }
 
         // Observe friendResponse
         lifecycleScope.launch {
-            viewModel.friendResponse.collect {
+            viewModel.friendResponse.collect { response ->
                 withContext(Dispatchers.Main) {
-                    it.data.let {
+                    response.data.let {
                         adapter.submitList(it)
-                    }
-                }
-            }
-        }
-
-        // Observe user data and set to headerView
-        lifecycleScope.launch {
-            viewModel.user.collect {
-                withContext(Dispatchers.Main) {
-                    val user = it.firstOrNull()
-                    if (user != null) {
-                        val headerView = binding.navigationView.getHeaderView(0)
-                        val headerUserPhoto = headerView.findViewById<ImageView>(R.id.iv_header)
-                        val headerUserName = headerView.findViewById<TextView>(R.id.tv_name_header)
-                        val headerUserPhone = headerView.findViewById<TextView>(R.id.tv_phone_header)
-
-                        headerUserName.text = user.name
-                        headerUserPhone.text = user.phone
-                        val avatar = StringHelper.generateTextDrawable(
-                            StringHelper.getInitial(user.name?.trim()),
-                            ContextCompat.getColor(this@HomeActivity, R.color.grape),
-                            headerUserPhoto.measuredWidth
-                        )
-                        if (user.photo.isNullOrEmpty()) {
-                            headerUserPhoto.setImageDrawable(avatar)
-                        } else {
-                            val requestOption = RequestOptions().placeholder(avatar).circleCrop()
-                            Glide
-                                .with(this@HomeActivity)
-                                .load(StringHelper.validateEmpty(user.photo))
-                                .transition(DrawableTransitionOptions.withCrossFade())
-                                .apply(requestOption)
-                                .error(avatar)
-                                .into(headerUserPhoto)
-                        }
-
-                        // Set click listener for the header view
-                        headerView.setOnClickListener {
-                            Log.d("Header test")
-                            val intent = Intent(this@HomeActivity, DetailProfileActivity::class.java).apply {
-                                putExtra("id", user.id)
-                                putExtra("name", user.name)
-                                putExtra("phone", user.phone)
-                                putExtra("photoUrl", user.photo)
-                            }
-                            startActivity(intent)
-                            binding.drawerLayout.closeDrawers()
-                        }
+//                        viewModel.listFriend()
                     }
                 }
             }
         }
 
         binding.recyclerView.adapter = adapter
+
+        // Observe user data from ViewModel
+        lifecycleScope.launch {
+            viewModel.user.collect { user ->
+                val headerView = binding.navigationView.getHeaderView(0)
+//                val headerPhoto = headerView.findViewById<ImageView>(R.id.img_detail_profile)
+                val headerUserName = headerView.findViewById<TextView>(R.id.tv_name_header)
+                val headerUserPhone = headerView.findViewById<TextView>(R.id.tv_phone_header)
+
+//                if (user?.photo != null) {
+//                    Glide
+//                        .with(this@HomeActivity)
+//                        .load(StringHelper.validateEmpty(user.photo))
+//                        .transition(DrawableTransitionOptions.withCrossFade())
+//                        .error(R.drawable.error)
+//                        .into(headerPhoto)
+//                } else {
+//                    headerPhoto.setImageResource(R.color.grape)
+//                }
+
+                headerUserName.text = user?.name
+                headerUserPhone.text = user?.phone.toString()
+
+                headerView.setOnClickListener {
+                    val intent =
+                        Intent(this@HomeActivity, DetailProfileActivity::class.java).apply {
+                            putExtra("name", user?.name)
+                            putExtra("phone", user?.phone)
+                            putExtra("photo", user?.photo)
+//                        putExtra("school", user?.schoolId)
+                        }
+                    startActivity(intent)
+                    binding.drawerLayout.closeDrawers()
+                }
+            }
+        }
     }
 
     private fun toDetail(data: User) {
@@ -145,14 +140,9 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(R.layout.a
             putExtra(DetailFriendActivity.DATA, data)
             putExtra("id", data.id)
             putExtra("name", data.name)
-            putExtra("school", data.schoolId)
+//            putExtra("school", schoolList.schoolName)
             putExtra("phone", data.phone)
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        getFriend()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -165,7 +155,15 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(R.layout.a
                 }
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }
 }
+
+//    private fun filterList(query: String) {
+//        val filteredList = viewModel.friendResponse.value?.data?.filter {
+//            it.name.contains(query, ignoreCase = true)
+//        }
+//        (binding.recyclerView.adapter as? ReactiveListAdapter<*, *>)?.submitList(filteredList)
+//    }

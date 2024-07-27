@@ -21,7 +21,7 @@ data class User (
 
     @Expose
     @SerializedName("phone")
-    var phone: String?,
+    var phone: Long?,
 
     @Expose
     @SerializedName("name")
@@ -31,13 +31,9 @@ data class User (
     @SerializedName("school_id")
     var schoolId: Int?,
 
-//    @Expose
-//    @SerializedName("password")
-//    var password: String?,
-//
-//    @Expose
-//    @SerializedName("password_confirmation")
-//    var passwordConfirmation: String?,
+    @Expose
+    @SerializedName("school_name")
+    var schoolName: String?,
 
     @Expose
     @SerializedName("photo")

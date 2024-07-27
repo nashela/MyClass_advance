@@ -4,22 +4,24 @@ import com.shelazh.myclass.data.remote.FriendResponse
 import com.shelazh.myclass.data.remote.LoginResponse
 import com.shelazh.myclass.data.remote.ProfileResponse
 import com.shelazh.myclass.data.remote.RegisterResponse
-import org.json.JSONObject
+import okhttp3.MultipartBody
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.Part
 
 interface ApiService {
-    @GET("user")
-    suspend fun getToken(): String
+//    @GET("user")
+//    suspend fun getToken(): String
 
     @FormUrlEncoded
     @POST("auth/login")
     suspend fun login(
-        @Field("phone") phone : String?,
-        @Field("password") password : String?
-    ):LoginResponse
+        @Field("phone") phone: String?,
+        @Field("password") password: String?
+    ): LoginResponse
 
     @FormUrlEncoded
     @POST("auth/register")
@@ -29,27 +31,27 @@ interface ApiService {
         @Field("school_id") schoolId: Int?,
         @Field("password") password: String?,
         @Field("password_confirmation") passwordConfirmation: String?
-    ):RegisterResponse
+    ): RegisterResponse
 
     @FormUrlEncoded
-    @POST("update-profile")
+    @POST("profile/update")
     suspend fun updateProfileNoPhoto(
         @Field("id") id: Int?,
         @Field("phone") phone: String?,
         @Field("name") name: String?,
-        @Field("school_id") schoolId: Int?
-    ):ProfileResponse
+//        @Field("school_id") schoolId: Int?
+    ): ProfileResponse
 
-    @GET("friend")
+    @Multipart
+    @POST("profile/update")
+    suspend fun updateProfileWithPhoto(
+        @Part("id") id: Int?,
+        @Part("name") name: String?,
+//        @Part("school_id") schoolId: String,
+        @Part("phone") phone: String?,
+        @Part photo: MultipartBody.Part?
+    ): ProfileResponse
+
+    @GET("friend/find")
     suspend fun getFriend(): FriendResponse
-
-//    @FormUrlEncoded
-//    @POST("update")
-//    suspend fun updateProfile(
-//        @Field("name") name : String?,
-//        @Field("school_id") school: String?,
-//        @Field("phone") phone: String?,
-//        @Field("password") password: String?,
-//        @Pa
-//        )
 }

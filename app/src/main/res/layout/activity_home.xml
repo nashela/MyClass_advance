@@ -40,18 +40,19 @@
                 android:fontFamily="@font/kanit_bold"
                 android:text="@string/my_class"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/btn_more"
+                app:layout_constraintEnd_toStartOf="@+id/search_view"
                 app:layout_constraintHorizontal_bias="0.486"
                 app:layout_constraintStart_toEndOf="@+id/btn_menu"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/btn_more"
+                android:id="@+id/search_view"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_25sdp"
                 android:layout_marginTop="20dp"
                 android:contentDescription="@string/photo"
                 android:src="@drawable/baseline_search_24"
+                android:imeOptions="actionSearch"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.95"
                 app:layout_constraintStart_toEndOf="@+id/btn_menu"
@@ -66,17 +67,17 @@
                 app:layout_constraintVertical_bias="0.0"
                 tools:listitem="@layout/item_friend" />
 
-            <ImageView
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp"
-                android:layout_gravity="end"
-                android:layout_marginBottom="36dp"
-                android:contentDescription="@string/photo"
-                android:src="@drawable/add"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.904"
-                app:layout_constraintStart_toStartOf="parent" />
+<!--            <ImageView-->
+<!--                android:layout_width="@dimen/_50sdp"-->
+<!--                android:layout_height="@dimen/_50sdp"-->
+<!--                android:layout_gravity="end"-->
+<!--                android:layout_marginBottom="36dp"-->
+<!--                android:contentDescription="@string/photo"-->
+<!--                android:src="@drawable/add"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.904"-->
+<!--                app:layout_constraintStart_toStartOf="parent" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
